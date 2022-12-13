@@ -1,0 +1,11 @@
+<form method="post" action="{{ path('app_classroom_add_grade', {'id': classroom.id}) }}" class="form">
+    <input type="hidden" name="_token" value={{ student.id }}>
+    <input type="hidden" name="_token_classroom" value={{ classroom.id }}>
+
+    <div class="form-group">
+        <label for="grade">Grade:</label>
+        <input type="number" name="grade" id="grade" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add grade</button>
+</form>

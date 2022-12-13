@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classroom{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/classroom.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="page-title">Classroom</h1>
+
+        <div class="links-wrapper">
+            <a href="/school" class="btn btn-secondary">Schools</a>
+            <a href="/student" class="btn btn-secondary">Students</a>
+        </div>
+
+        <div class="classroom-info-wrapper">
+            <h2>Classroom Information</h2>
+
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ classroom.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ classroom.name }}</td>
+                </tr>
+            </table>
+
+            {{ include('classroom/_delete_form.html.twig') }}
+
+            <a href="{{ path('app_classroom_index') }}" class="btn btn-secondary">Back to list</a>
+            <a href="{{ path('app_classroom_edit', {'id': classroom.id}) }}" class="btn btn-primary">Edit</a>
+        </div>
+
+        {% if classroom.grades|length > 0 and classroom.students|length > 0 %}
+            {% set myAverage = 0 %}
+            {% for grade in classroom.grades %}
+                {% set myAverage = myAverage + grade.score %}
+            {% endfor %}
+            <h2>Class<h2>

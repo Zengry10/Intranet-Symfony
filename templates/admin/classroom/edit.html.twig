@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit{% endblock %}
+
+{% block body %}
+    <h1>Edit Classroom</h1>
+
+    {{ include('classroom/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_classroom_index') }}" class="btn btn-secondary">Previous Page</a>
+
+    {{ include('classroom/_delete_form.html.twig') }}
+{% endblock %}

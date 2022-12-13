@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student{% endblock %}
+
+{% block stylesheets %}
+<style>
+h2 {
+text-align: center;
+font-family: sans-serif;
+}
+
+    table {
+        margin: auto;
+        border-collapse: collapse;
+        width: 50%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 1.5em;
+        color: blue;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+<a href="/school">Schools</a>
+<a href="/classroom">Classrooms</a>
+
+{% if student.grades|length > 0 %}
+    {% set myAverage = 0 %}
+    {% for grade in student.grades %}
+        {% set myAverage = myAverage + grade.score %}
+    {% endfor %}
+    <h2>Grade average : {{ myAverage // student.grades|length }}/20</h2>
+{% endif %}
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ student.id }}</td>
+        </tr>
+    <tbody>
+<table>
+       
+

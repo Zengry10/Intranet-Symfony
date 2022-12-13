@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des élèves{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des élèves</h1>
+    <a href="/school">Écoles</a>
+    <a href="/classroom">Classes</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date de création</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Date de naissance</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.createdAt ? student.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.firstName }}</td>
+            <tr>
+    </table>

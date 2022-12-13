@@ -1,0 +1,6 @@
+{{ form_start(form, {'attr': {'class': 'form'}}) }}
+    {{ form_row(form.field1) }}
+    {{ form_row(form.field2) }}
+    {{ form_row(form.field3) }}
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Saved in') }}</button>
+{{ form_end(form) }}

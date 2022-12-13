@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Classroom{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Create a New Classroom</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {{ include('classroom/_form.html.twig') }}
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a class="btn btn-secondary" href="{{ path('app_classroom_index') }}">Back to List</a>
+    </div>
+{% endblock %}

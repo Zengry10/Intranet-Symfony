@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classroom index{% endblock %}
+
+{% block body %}
+    <h1>Classroom list</h1>
+    <a href="/school" class="btn btn-secondary">Schools</a>
+    <a href="/student" class="btn btn-secondary">Students</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classroom in classrooms %}
+            <tr>
+                <td>{{ classroom.id }}</td>
+                <td>{{ classroom.name }}</td>
+                <td>
+                    <a href="{{ path('app_classroom_show', {'id': classroom.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                    <a href="{{ path('app_classroom_edit', {'id': classroom.id}) }}" class="btn btn-sm btn-secondary">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_classroom_new') }}" class="btn btn-primary">Click for an other</a>
+{% endblock %}

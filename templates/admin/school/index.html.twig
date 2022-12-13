@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des écoles{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Liste des écoles</h1>
+
+        <a href="/classroom" class="btn btn-secondary">Salles de classe</a>
+        <a href="/student" class="btn btn-secondary">Élèves</a>
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for school in schools %}
+                    <tr>
+                        <td>{{ school.id }}</td>
+                        <td>{{ school.name }}</td>
+                        <td>
+                            <a href="{{ path('app_school_show', {'id': school.id}) }}" class="btn btn-primary">Afficher</a>
+                            <a href="{{ path('app_school_edit', {'id': school.id}) }}" class="btn btn-secondary">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Aucun enregistrement trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_school_new') }}" class="btn btn-primary">Créer une nouvelle école</a>
+    </div>
+{% endblock %}

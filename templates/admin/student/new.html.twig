@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Student{% endblock %}
+
+{% block stylesheets %}
+<style>
+h1 {
+color: blue;
+text-align: center;
+font-family: sans-serif;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>Create new Student</h1>
+
+{{ include('student/_form.html.twig') }}
+
+<a href="{{ path('app_student_index') }}" style="text-decoration: none; font-size: 1.5em;">Back to list</a>
+
+{% endblock %}
